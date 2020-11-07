@@ -11,6 +11,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const db = require("./config/keys").mongoURI;
+
+mongoose
+  .connect(db)
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.log(err));
+
 app.use("/chat", chatRoutes);
 app.use("/email", emailRoutes);
 

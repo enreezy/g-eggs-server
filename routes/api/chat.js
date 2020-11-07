@@ -4,12 +4,20 @@ const dialogflow = require("@google-cloud/dialogflow");
 const uuid = require("uuid");
 const path = require("path");
 
+const Chat = require("../../models/Chat");
+
 router.get("/", async (req, res) => {
   const message = await runSample("g-egg-ybef");
   res.json(message);
 });
 
 router.post("/", async (req, res) => {
+  const newMessage = Chat({
+    message: req.body.message,
+  });
+
+  newMessage.save();
+
   const message = await runSample("g-egg-ybef", req.body.message);
   res.json(message);
 });
