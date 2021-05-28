@@ -32,7 +32,7 @@ async function runSample(projectId, message) {
 
   // Create a new session
   const sessionClient = new dialogflow.SessionsClient({
-    keyFilename: path.resolve(__dirname, "g-egg-ybef-b2dc5c42fa1c.json"),
+    keyFilename: path.resolve(__dirname, "<JSON FILE>"),
   });
   const sessionPath = sessionClient.projectAgentSessionPath(
     projectId,
