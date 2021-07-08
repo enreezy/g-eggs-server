@@ -6,13 +6,13 @@ const smtpTransport = require("nodemailer-smtp-transport");
 const Email = require("../../models/Email");
 
 router.post("/", async (req, res) => {
-  const newEmail = Email({
-    sender: req.body.email,
-    name: req.body.name,
-    message: req.body.message,
-  });
+  // const newEmail = Email({
+  //   sender: req.body.email,
+  //   name: req.body.name,
+  //   message: req.body.message,
+  // });
 
-  newEmail.save();
+  // newEmail.save();
 
   let transport = nodemailer.createTransport(
     smtpTransport({

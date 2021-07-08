@@ -12,11 +12,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const newMessage = Chat({
-    message: req.body.message,
-  });
+  // const newMessage = Chat({
+  //   message: req.body.message,
+  // });
 
-  newMessage.save();
+  // newMessage.save();
 
   const message = await runSample("g-egg-ybef", req.body.message);
   res.json(message);
@@ -32,8 +32,12 @@ async function runSample(projectId, message) {
 
   // Create a new session
   const sessionClient = new dialogflow.SessionsClient({
-    keyFilename: path.resolve(__dirname, "<JSON FILE>"),
+    credentials: {
+      private_key: process.env.PRIVATE_KEY,
+      client_email: process.env.CLIENT_EMAIL 
+    }
   });
+
   const sessionPath = sessionClient.projectAgentSessionPath(
     projectId,
     sessionId
