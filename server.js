@@ -22,6 +22,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/chat", chatRoutes);
 app.use("/email", emailRoutes);
 
+app.use("/", (req, res) => {
+  res.send("G-Eggs");
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
